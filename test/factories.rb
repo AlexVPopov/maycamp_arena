@@ -16,6 +16,12 @@ FactoryGirl.define do
     c.start_time { 1.hour.ago }
     c.end_time { 1.hour.from_now }
     c.name "Test contest"
+
+    association :contest_group
+  end
+
+  factory :contest_group do
+    sequence(:name) { |n| "group #{n}" }
   end
 
   factory :run do |r|
