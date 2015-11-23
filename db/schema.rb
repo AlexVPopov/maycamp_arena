@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123091513) do
+ActiveRecord::Schema.define(version: 20151123100611) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -76,7 +76,10 @@ ActiveRecord::Schema.define(version: 20151123091513) do
     t.boolean  "visible",             limit: 1,   default: true
     t.string   "runner_type",         limit: 255, default: "box"
     t.boolean  "best_submit_results", limit: 1,   default: false
+    t.integer  "contest_group_id",    limit: 4,                   null: false
   end
+
+  add_index "contests", ["contest_group_id"], name: "index_contests_on_contest_group_id", using: :btree
 
   create_table "external_contest_results", force: :cascade do |t|
     t.integer  "external_contest_id", limit: 4

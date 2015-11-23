@@ -179,6 +179,7 @@ bg:
       user: Потребител
       run: Решение
       problem: Задача
+      contest_group: Група
     attributes:
       user:
         login: Потребителското име
@@ -189,6 +190,8 @@ bg:
         source_code: Сорс код
       problem:
         name: Име
+      contest:
+        contest_group: Група
 
       body: "Възникнаха проблеми при следните полета:"
   support:
