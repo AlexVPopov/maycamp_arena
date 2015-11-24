@@ -1,0 +1,14 @@
+<h2>Практика</h2>
+<br />
+<p>Тук можете да се упражнявате на вече минали състезания.</p>
+<br />
+<table>
+  <tr>
+    <th>Група</th>
+  </tr>
+  <% ContestGroup.find_each do |group| %>
+    <tr>
+      <td><%= link_to group.name, group %></td>
+    </tr>
+  <% end %>
+</table>
