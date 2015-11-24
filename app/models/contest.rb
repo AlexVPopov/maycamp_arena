@@ -56,7 +56,7 @@ class Contest < ActiveRecord::Base
   end
 
   def max_score
-    100 * problems.count
+    100 * problems_count
   end
 
   def generate_contest_results

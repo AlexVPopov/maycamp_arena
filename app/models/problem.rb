@@ -4,7 +4,7 @@ class Problem < ActiveRecord::Base
   include Latinize
 
   has_many :runs, :dependent => :destroy
-  belongs_to :contest
+  belongs_to :contest, counter_cache: true
   has_and_belongs_to_many :categories
 
   validates_presence_of :name, :time_limit
