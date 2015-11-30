@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Групи състезания</h1>
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Име</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contest_groups.each do |contest_group| %>
+      <tr>
+        <td><%= contest_group.name %></td>
+        <td>
+          <%= link_to 'Детайли', admin_contest_group_path(contest_group) %>
+          <%= link_to 'Промени', edit_admin_contest_group_path(contest_group) %>
+          <%= link_to 'Изтрии', contest_group, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Нова група състезания', new_admin_contest_group_path %>
