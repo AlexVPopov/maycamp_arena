@@ -18,6 +18,12 @@ bg:
 
     order: [ "day", "month", "year" ]
 
+  helpers:
+    submit:
+      contest_group:
+        create: 'Създаване'
+        update: 'Обновяване'
+
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
