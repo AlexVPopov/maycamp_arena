@@ -198,6 +198,8 @@ bg:
         name: Име
       contest:
         contest_group: Група
+      contest_group:
+        name: Име
 
       body: "Възникнаха проблеми при следните полета:"
   support:
