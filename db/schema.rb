@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124114253) do
+ActiveRecord::Schema.define(version: 20151203150848) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 20151124114253) do
     t.integer  "show_sources",        limit: 4,   default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "practicable",         limit: 1,   default: false
-    t.boolean  "results_visible",     limit: 1,   default: false
-    t.boolean  "auto_test",           limit: 1,   default: false
-    t.boolean  "visible",             limit: 1,   default: true
+    t.boolean  "practicable",                     default: false
+    t.boolean  "results_visible",                 default: false
+    t.boolean  "auto_test",                       default: false
+    t.boolean  "visible",                         default: true
     t.string   "runner_type",         limit: 255, default: "box"
-    t.boolean  "best_submit_results", limit: 1,   default: false
+    t.boolean  "best_submit_results",             default: false
     t.integer  "contest_group_id",    limit: 4,                   null: false
     t.integer  "problems_count",      limit: 4,   default: 0,     null: false
   end
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20151124114253) do
     t.datetime "updated_at"
     t.integer  "memory_limit",    limit: 4,                           default: 16777216
     t.string   "diff_parameters", limit: 255,                         default: "",       null: false
-    t.boolean  "runs_visible",    limit: 1
+    t.boolean  "runs_visible"
   end
 
   add_index "problems", ["contest_id"], name: "index_problems_on_contest_id", using: :btree
@@ -202,4 +202,5 @@ ActiveRecord::Schema.define(version: 20151124114253) do
 
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
+  add_foreign_key "contests", "contest_groups"
 end
