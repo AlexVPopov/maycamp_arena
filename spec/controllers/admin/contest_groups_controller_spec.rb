@@ -31,8 +31,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
       it { should route(:delete, '/admin/contest_groups/1').to      action: :destroy, id: 1 }
     end
 
-    it { should use_before_action(:set_contest_group) }
-
     describe 'GET #index' do
       before { get :index }
 

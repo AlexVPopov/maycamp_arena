@@ -1,6 +1,4 @@
 class Admin::ContestGroupsController < Admin::BaseController
-  before_action :set_contest_group, only: [:edit, :update, :destroy]
-
   def index
     authorize :contest_group
 
@@ -15,6 +13,8 @@ class Admin::ContestGroupsController < Admin::BaseController
 
   def edit
     authorize :contest_group
+
+    @contest_group = ContestGroup.find(params[:id])
   end
 
   def create
@@ -32,6 +32,8 @@ class Admin::ContestGroupsController < Admin::BaseController
   def update
     authorize :contest_group
 
+    @contest_group = ContestGroup.find(params[:id])
+
     if @contest_group.update(contest_group_params)
       redirect_to admin_contest_groups_path, notice: 'Групата бе обновена успешно.'
     else
@@ -43,7 +45,7 @@ class Admin::ContestGroupsController < Admin::BaseController
     authorize :contest_group
 
     if Contest.where(contest_group_id: params[:id]).empty?
-      @contest_group.destroy
+      ContestGroup.find(params[:id]).destroy
       redirect_to admin_contest_groups_path, notice: 'Групата бе изтрита успешно.'
     else
       flash[:error] = 'Групата не е празна. Моля, преместете състезанията в друга група'
@@ -52,9 +54,6 @@ class Admin::ContestGroupsController < Admin::BaseController
   end
 
   private
-    def set_contest_group
-      @contest_group = ContestGroup.find(params[:id])
-    end
 
     def contest_group_params
       params.require(:contest_group).permit(:name)
