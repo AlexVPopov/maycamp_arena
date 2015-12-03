@@ -51,8 +51,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
       end
 
       it { should render_template :new }
-      # TODO: resolve error thrown by render_views, required for this test
-      # it { should render_template partial: '_form' }
       it { should respond_with :success }
     end
 
@@ -64,8 +62,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
       end
 
       it { should render_template :edit }
-      # TODO: resolve error thrown by render_views, required for this test
-      # it { should render_template partial: '_form' }
       it { should respond_with :success }
     end
 
@@ -101,8 +97,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         end
 
         it { should render_template :new }
-        # TODO: resolve error thrown by render_views, required for this test
-        # it { should render_template partial: '_form' }
         it { should respond_with :success }
       end
     end
