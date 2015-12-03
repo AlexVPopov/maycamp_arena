@@ -153,26 +153,53 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
     end
 
     describe 'DELETE #destroy' do
-      let!(:contest_group) { create :contest_group }
-      let(:request) { -> { delete :destroy, id: contest_group.to_param } }
+      context 'an empty contest group' do
+        let!(:contest_group) { create :contest_group }
+        let(:request) { -> { delete :destroy, id: contest_group.to_param } }
 
-      it 'destroys the requested contest group' do
-        expect(&request).to change(ContestGroup, :count).by -1
+        it 'destroys the requested contest group' do
+          expect(&request).to change(ContestGroup, :count).by -1
+        end
+
+        it do
+          request.call
+          should redirect_to action: :index
+        end
+
+        it do
+          request.call
+          should respond_with :found
+        end
+
+        it do
+          request.call
+          should set_flash['notice'].to 'Групата бе изтрита успешно.'
+        end
       end
 
-      it do
-        request.call
-        should redirect_to action: :index
-      end
+      context 'a contest group with contests assigned to it' do
+        let!(:contest_group) { create :contest_group }
+        let(:request) { -> { delete :destroy, id: contest_group.to_param } }
+        before { create :contest, contest_group: contest_group }
 
-      it do
-        request.call
-        should respond_with :found
-      end
+        it 'doesn\'t destroy the requested contest group' do
+          expect(&request).not_to change(ContestGroup, :count)
+        end
 
-       it do
-        request.call
-        should set_flash['notice'].to 'Групата бе изтрита успешно.'
+        it do
+          request.call
+          should render_template :index
+        end
+
+        it do
+          request.call
+          should respond_with :success
+        end
+
+        it do
+          request.call
+          should set_flash[:error].to 'Групата не е празна. Моля, преместете състезанията в друга група'
+        end
       end
     end
   end

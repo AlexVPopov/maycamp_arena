@@ -1,5 +1,5 @@
 class ContestGroup < ActiveRecord::Base
-  has_many :contests, dependent: :destroy
+  has_many :contests
 
   validates :name, presence: true
 end

@@ -42,8 +42,13 @@ class Admin::ContestGroupsController < Admin::BaseController
   def destroy
     authorize :contest_group
 
-    @contest_group.destroy
-    redirect_to admin_contest_groups_path, notice: 'Групата бе изтрита успешно.'
+    if Contest.where(contest_group_id: params[:id]).empty?
+      @contest_group.destroy
+      redirect_to admin_contest_groups_path, notice: 'Групата бе изтрита успешно.'
+    else
+      flash[:error] = 'Групата не е празна. Моля, преместете състезанията в друга група'
+      render :index
+    end
   end
 
   private
