@@ -14,6 +14,8 @@ MaycampArena::Application.routes.draw do
   get '/problem_runs/:id', to: 'main#problem_runs', :as => 'problem_runs'
   get '/main/results', to: 'main#results'
 
+  resources :contest_groups, only: :show
+
   resources :users do
     collection do
       get :password_forgot
@@ -47,6 +49,8 @@ MaycampArena::Application.routes.draw do
         end
       end
     end
+
+    resources :contest_groups, except: :show
 
     resources :contests do
       member do

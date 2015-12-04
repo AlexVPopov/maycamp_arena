@@ -10,6 +10,8 @@
       | name                  | Valentin Mihov            |
       | email                 | valentin.mihov@gmail.com  |
       | unencrypted_password  | secret                    |
+    And there is a contest_group with attributes:
+      | name | група1 |
     And I am not logged in
     When I am on the login page
     And I fill in the following:
@@ -23,6 +25,7 @@
       | Продължителност: | 120 |
     And I select "October 16, 2014 16:21:39" as the "Начало:" datetime
     And I select "October 18, 2014 16:21:39" as the "Край:" datetime
+    And I select "група1" from "Група:"
     And I press "Създаване"
     And I follow "Задачи" within ".post"
     And I follow "Нова задача"

@@ -20,6 +20,8 @@ module NavigationHelpers
       user_path(User.find_by_name!($1))
     when /the contest list in the admin panel/
       admin_contests_path
+    when /the contest groups list in the admin panel/
+      admin_contest_groups_path
     when /the contest edit page for contest "([^\"]+)" in the admin panel/
       edit_admin_contest_path(Contest.find_by_name!($1))
     when /the problem list for contest "([^\"]+)" in the admin panel/

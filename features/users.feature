@@ -29,9 +29,10 @@ Feature: User stats
   Scenario: Update user profile
     Given I am logged in as contestant user with attributes:
       | name | Valentin Mihov |
-    And there is a finished contest with attributes:
-      | name        | Fall contest |
-      | practicable | true         |
+    And there is a contest_in_group_one with attributes:
+      | name          | Fall contest |
+      | practicable   | true         |
     And I am on the homepage
+    And I follow "група 1"
     And I follow "Практикувай"
     Then I should see "Практикуване на Fall contest"

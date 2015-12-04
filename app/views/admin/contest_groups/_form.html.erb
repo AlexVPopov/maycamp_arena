@@ -1,0 +1,22 @@
+<%= form_for [:admin, @contest_group] do |f| %>
+  <% if @contest_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contest_group.errors.count, "грешка") %> при обработването на групата:</h2>
+
+      <ul>
+      <% @contest_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name, "Име:" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
