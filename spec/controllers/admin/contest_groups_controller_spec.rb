@@ -6,7 +6,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
     it { should route(:get,    '/admin/contest_groups').to        action: :index }
     it { should route(:get,    '/admin/contest_groups/new').to    action: :new }
     it { should route(:post,   '/admin/contest_groups').to        action: :create }
-    it { should route(:get,    '/admin/contest_groups/1').to      action: :show, id: 1 }
     it { should route(:get,    '/admin/contest_groups/1/edit').to action: :edit, id: 1 }
     it { should route(:put,    '/admin/contest_groups/1').to      action: :update, id: 1}
     it { should route(:delete, '/admin/contest_groups/1').to      action: :destroy, id: 1 }
@@ -22,17 +21,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
     end
 
     it { should render_template :index }
-    it { should respond_with :success }
-  end
-
-  describe 'GET #show' do
-    before { get :show, id: first_contest_group.to_param }
-
-    it 'assigns the request contest group as @contest_group' do
-      expect(assigns(:contest_group)).to eq first_contest_group
-    end
-
-    it { should render_template :show }
     it { should respond_with :success }
   end
 

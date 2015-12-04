@@ -1,14 +1,10 @@
 class Admin::ContestGroupsController < Admin::BaseController
-  before_action :set_contest_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_contest_group, only: [:edit, :update, :destroy]
 
   def index
     authorize :contest_group
 
     @contest_groups = ContestGroup.all
-  end
-
-  def show
-    authorize :contest_group
   end
 
   def new

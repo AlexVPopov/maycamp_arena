@@ -50,7 +50,7 @@ MaycampArena::Application.routes.draw do
       end
     end
 
-    resources :contest_groups
+    resources :contest_groups, except: :show
 
     resources :contests do
       member do
