@@ -83,7 +83,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         end
 
         it { should redirect_to action: :index }
-        it { should set_flash['notice'].to 'Групата е създадена успешно.' }
         it { should respond_with :found }
       end
 
@@ -123,7 +122,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         end
 
         it { should redirect_to action: :index }
-        it { should set_flash['notice'].to 'Групата е обновена успешно.' }
         it { should respond_with :found }
       end
 
@@ -162,11 +160,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
           request.call
           should respond_with :found
         end
-
-        it do
-          request.call
-          should set_flash['notice'].to 'Групата е изтрита успешно.'
-        end
       end
 
       context 'a contest group with contests assigned to it' do
@@ -186,11 +179,6 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         it do
           request.call
           should respond_with :success
-        end
-
-        it do
-          request.call
-          should set_flash[:error].to 'Групата не е празна. Моля, преместете състезанията в друга група'
         end
       end
     end
