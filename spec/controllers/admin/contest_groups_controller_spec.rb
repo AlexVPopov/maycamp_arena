@@ -83,7 +83,7 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         end
 
         it { should redirect_to action: :index }
-        it { should set_flash['notice'].to 'Групата бе създадена успешно.' }
+        it { should set_flash['notice'].to 'Групата е създадена успешно.' }
         it { should respond_with :found }
       end
 
@@ -123,7 +123,7 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
         end
 
         it { should redirect_to action: :index }
-        it { should set_flash['notice'].to 'Групата бе обновена успешно.' }
+        it { should set_flash['notice'].to 'Групата е обновена успешно.' }
         it { should respond_with :found }
       end
 
@@ -165,7 +165,7 @@ RSpec.describe Admin::ContestGroupsController, type: :controller do
 
         it do
           request.call
-          should set_flash['notice'].to 'Групата бе изтрита успешно.'
+          should set_flash['notice'].to 'Групата е изтрита успешно.'
         end
       end
 

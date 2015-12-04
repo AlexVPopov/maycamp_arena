@@ -23,7 +23,7 @@ class Admin::ContestGroupsController < Admin::BaseController
     @contest_group = ContestGroup.new(contest_group_params)
 
     if @contest_group.save
-      redirect_to admin_contest_groups_path, notice: 'Групата бе създадена успешно.'
+      redirect_to admin_contest_groups_path, notice: 'Групата е създадена успешно.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ContestGroupsController < Admin::BaseController
     @contest_group = ContestGroup.find(params[:id])
 
     if @contest_group.update(contest_group_params)
-      redirect_to admin_contest_groups_path, notice: 'Групата бе обновена успешно.'
+      redirect_to admin_contest_groups_path, notice: 'Групата е обновена успешно.'
     else
       render :edit
     end
@@ -46,7 +46,7 @@ class Admin::ContestGroupsController < Admin::BaseController
 
     if Contest.where(contest_group_id: params[:id]).empty?
       ContestGroup.find(params[:id]).destroy
-      redirect_to admin_contest_groups_path, notice: 'Групата бе изтрита успешно.'
+      redirect_to admin_contest_groups_path, notice: 'Групата е изтрита успешно.'
     else
       flash[:error] = 'Групата не е празна. Моля, преместете състезанията в друга група'
       render :index

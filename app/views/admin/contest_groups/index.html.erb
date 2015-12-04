@@ -14,8 +14,8 @@
       <tr>
         <td><%= contest_group.name %></td>
         <td>
-          <%= link_to 'Промени', edit_admin_contest_group_path(contest_group) %>
-          <%= link_to 'Изтрии', admin_contest_group_path(contest_group), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Промяна', edit_admin_contest_group_path(contest_group) %>
+          <%= link_to 'Изтриване', admin_contest_group_path(contest_group), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
