@@ -18,6 +18,12 @@ FactoryGirl.define do
     c.name "Test contest"
 
     association :contest_group
+
+    trait :in_group_one do
+      association :contest_group, name: 'група 1'
+    end
+
+    factory :contest_in_group_one, traits: [:in_group_one]
   end
 
   factory :contest_group do
